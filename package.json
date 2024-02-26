@@ -6,18 +6,27 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["misracrules", "vscode", "extension"],
-  "author": "Your Name",
+  "keywords": [
+    "misracrules",
+    "vscode",
+    "extension"
+  ],
+  "author": "Alexandre Santos",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.24.0",  
-    "vscode": "^1.1.37"
+    "axios": "^1.6.7",
+    "openai": "^4.28.0",
+    "vscode": "^1.1.34"
   },
   "engines": {
     "vscode": "^1.0.0"
   },
-  "categories": ["Other"],
-  "activationEvents": ["onCommand:extension.misracrules"],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.misracrules"
+  ],
   "contributes": {
     "commands": [
       {
@@ -32,10 +41,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alex-a22103429/misracrules1.0.git"  
+    "url": "https://github.com/alex-a22103429/misracrules1.0.git"
   },
   "bugs": {
-    "url": "https://github.com/alex-a22103429/misracrules1.0/issues"  
+    "url": "https://github.com/alex-a22103429/misracrules1.0/issues"
   },
-  "homepage": "https://github.com/alex-a22103429/misracrules1.0"  
+  "homepage": "https://github.com/alex-a22103429/misracrules1.0"
 }

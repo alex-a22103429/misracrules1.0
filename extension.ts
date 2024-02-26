@@ -14,8 +14,8 @@ export function activate(context: vscode.ExtensionContext) {
                 try {
                     // Display WebView with progress bar
                     const panel = vscode.window.createWebviewPanel(
-                        'chatGPTProgress',
-                        'ChatGPT Progress',
+                        'misracrulesProgress',
+                        'MISRA-C RULES Progress',
                         vscode.ViewColumn.Two,
                         {
                             enableScripts: true,
@@ -30,10 +30,10 @@ export function activate(context: vscode.ExtensionContext) {
                     // Close the WebView when processing is complete
                     panel.dispose();
                 } catch (error) {
-                    vscode.window.showErrorMessage(`Error communicating with ChatGPT: ${error.message}`);
+                    vscode.window.showErrorMessage(`Error communicating with MISRA-C RULES: ${error.message}`);
                 }
             } else {
-                vscode.window.showWarningMessage('No code snippet selected. Please select a code snippet before using ChatGPT.');
+                vscode.window.showWarningMessage('No code snippet selected. Please select a code snippet before using MISRA-C RULES.');
             }
         }
     });
@@ -71,7 +71,9 @@ function setApiKey() {
         password: true,
     }).then(apiKey => {
         if (apiKey) {
-            vscode.workspace.getConfiguration().update('misracrules.apiKey', apiKey, true);
+            // Use the apiKey as needed with OpenAIAPI
+            OpenAIAPI.setApiKey(apiKey);
+
             vscode.window.showInformationMessage('API key updated successfully.');
         }
     });
