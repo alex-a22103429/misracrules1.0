@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "./out",
+        "rootDir": "./src",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "declaration": true,
+        "sourceMap": true,
+        "baseUrl": "./",  // Adjusted the baseUrl for consistency
+        "paths": {
+            "*": ["node_modules/*"],
+            "vscode": ["node_modules/vscode"]
+        },
+        "typeRoots": ["./typings", "./node_modules/@types"]  // Added typeRoots for custom type definitions
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "out"]
+}
