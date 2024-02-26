@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import { OpenAIAPI } from './openai';
 
 export function activate(context: vscode.ExtensionContext) {
-    let disposable = vscode.commands.registerCommand('extension.startChatGPT', async () => {
+    let disposable = vscode.commands.registerCommand('extension.misracrules', async () => {
         const editor = vscode.window.activeTextEditor;
 
         if (editor) {

@@ -10,19 +10,19 @@
   "author": "Your Name",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.24.0",  // Added axios for HTTP requests
+    "axios": "^0.24.0",  
     "vscode": "^1.1.37"
   },
   "engines": {
     "vscode": "^1.0.0"
   },
   "categories": ["Other"],
-  "activationEvents": ["onCommand:extension.startChatGPT"],
+  "activationEvents": ["onCommand:extension.misracrules"],
   "contributes": {
     "commands": [
       {
-        "command": "extension.startChatGPT",
-        "title": "Start ChatGPT"
+        "command": "extension.misracrules",
+        "title": "MISRA-C RULES"
       },
       {
         "command": "extension.setApiKey",
