@@ -1,0 +1,4 @@
+// .vscode/settings.json
+{
+    "myChatGPT.apiKey": "YOUR_DEFAULT_API_KEY"
+}

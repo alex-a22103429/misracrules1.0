@@ -1,0 +1,41 @@
+{
+  "name": "misracrules",
+  "version": "1.0.0",
+  "description": "Your extension description here",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["misracrules", "vscode", "extension"],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",  // Added axios for HTTP requests
+    "vscode": "^1.1.37"
+  },
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onCommand:extension.startChatGPT"],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.startChatGPT",
+        "title": "Start ChatGPT"
+      },
+      {
+        "command": "extension.setApiKey",
+        "title": "Set OpenAI API Key"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alex-a22103429/misracrules1.0.git"  // Replace with your repository URL
+  },
+  "bugs": {
+    "url": "https://github.com/alex-a22103429/misracrules1.0/issues"  // Replace with your issues URL
+  },
+  "homepage": "https://github.com/alex-a22103429/misracrules1.0"  // Replace with your homepage URL
+}
