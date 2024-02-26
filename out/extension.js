@@ -94,10 +94,13 @@ function setApiKey() {
         placeHolder: 'API Key',
         password: true,
     }).then((apiKey) => {
-        if (apiKey !== undefined) {
+        if (apiKey) {
             // Use the apiKey as needed with OpenAIAPI
             openai_1.OpenAIAPI.setApiKey(apiKey);
             vscode.window.showInformationMessage('API key updated successfully.');
+        }
+        else {
+            vscode.window.showErrorMessage('No API key entered. Please provide a valid API key.');
         }
     });
 }

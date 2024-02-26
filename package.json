@@ -1,7 +1,7 @@
 {
   "name": "misracrules",
   "version": "1.0.0",
-  "description": "Your extension description here",
+  "description": "Code will adapt to MISRA-C rules",
   "main": "webview/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -68,5 +68,8 @@
   "typeRoots": [
     "./typings",
     "./node_modules/@types"
-  ]
+  ],
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
 }
