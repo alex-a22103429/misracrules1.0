@@ -32,10 +32,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alex-a22103429/misracrules1.0.git"  // Replace with your repository URL
+    "url": "https://github.com/alex-a22103429/misracrules1.0.git"  
   },
   "bugs": {
-    "url": "https://github.com/alex-a22103429/misracrules1.0/issues"  // Replace with your issues URL
+    "url": "https://github.com/alex-a22103429/misracrules1.0/issues"  
   },
-  "homepage": "https://github.com/alex-a22103429/misracrules1.0"  // Replace with your homepage URL
+  "homepage": "https://github.com/alex-a22103429/misracrules1.0"  
 }
