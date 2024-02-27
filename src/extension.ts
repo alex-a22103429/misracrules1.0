@@ -1,4 +1,3 @@
-// extension.ts
 import * as vscode from 'vscode';
 import { OpenAIAPI } from './openai';
 

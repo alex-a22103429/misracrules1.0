@@ -33,7 +33,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
-// extension.ts
 const vscode = __importStar(require("vscode"));
 const openai_1 = require("./openai");
 function activate(context) {

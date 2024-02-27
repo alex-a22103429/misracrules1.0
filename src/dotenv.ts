@@ -1,6 +1,5 @@
 // Import OpenAIAPI
 import { OpenAIAPI } from './openai';
-
 // Import and configure dotenv
 import * as dotenv from 'dotenv';
 dotenv.config();

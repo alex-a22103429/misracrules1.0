@@ -1,4 +1,3 @@
-// openai.ts
 import axios from 'axios';
 
 export class OpenAIAPI {
