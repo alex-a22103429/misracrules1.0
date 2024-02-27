@@ -34,9 +34,10 @@
   ],
   "activationEvents": [
     "onCommand:extension.misracrules",
-    "onCommand:extension.setApiKey"
-],
-
+    "onCommand:extension.setApiKey",
+    "onCommand:extension.showMisracRules",
+    "onCommand:extension.showSetApiKey"
+  ],
   "contributes": {
     "commands": [
       {
@@ -50,8 +51,32 @@
       {
         "command": "extension.setApiKey",
         "title": "Set OpenAI API Key"
+      },
+      {
+        "command": "extension.showMisracRules",
+        "title": "Show MISRA-C Rules"
+      },
+      {
+        "command": "extension.showSetApiKey",
+        "title": "Show Set API Key"
       }
-    ]
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "misraRules",
+          "name": "MISRA-C Rules",
+          "when": "explorerResourceIsFolder",
+          "order": 100
+        },
+        {
+          "id": "setApiKey",
+          "name": "Set API Key",
+          "when": "explorerResourceIsFolder",
+          "order": 101
+        }
+      ]
+    }
   },
   "icon": "icons/misracrules-128.png",
   "icons": {
