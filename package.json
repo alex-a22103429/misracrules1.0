@@ -1,103 +1,25 @@
 {
-  "name": "misracrules",
+  "name": "misracrules1.0",
   "version": "1.0.0",
-  "description": "Code will adapt to MISRA-C rules",
-  "main": "webview/index.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublishOnly": "tsc",
-    "vscode:prepublish": "npm run prepublishOnly",
-    "compile": "tsc",
-    "watch": "tsc -w",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "misracrules",
-    "vscode",
-    "extension"
-  ],
-  "author": "Alexandre Santos",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^16.11.15",
-    "@types/vscode": "^1.86.0",
-    "axios": "^1.6.7",
-    "eslint": "^8.2.0",
-    "typescript": "^4.9.5"
+    "typescript": "^5.3.3",
+    "vscode": "^1.1.37"
   },
-  "engines": {
-    "vscode": "^1.86.0"
+  "scripts": {
+    "build": "tsc"
   },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:extension.misracrules",
-    "onCommand:extension.setApiKey",
-    "onCommand:extension.showMisracRules",
-    "onCommand:extension.showSetApiKey"
-  ],
-  "contributes": {
-    "commands": [
-      {
-        "command": "extension.misracrules",
-        "title": "MISRA-C RULES",
-        "icon": {
-          "light": "./icons/misracrules-light.png",
-          "dark": "./icons/misracrules-dark.png"
-        }
-      },
-      {
-        "command": "extension.setApiKey",
-        "title": "Set OpenAI API Key"
-      },
-      {
-        "command": "extension.showMisracRules",
-        "title": "Show MISRA-C Rules"
-      },
-      {
-        "command": "extension.showSetApiKey",
-        "title": "Show Set API Key"
-      }
-    ],
-    "views": {
-      "explorer": [
-        {
-          "id": "misraRules",
-          "name": "MISRA-C Rules",
-          "when": "explorerResourceIsFolder",
-          "order": 100
-        },
-        {
-          "id": "setApiKey",
-          "name": "Set API Key",
-          "when": "explorerResourceIsFolder",
-          "order": 101
-        }
-      ]
-    }
-  },
-  "icon": "icons/misracrules-128.png",
-  "icons": {
-    "16": "icons/misracrules-16.png",
-    "48": "icons/misracrules-48.png",
-    "128": "icons/misracrules-128.png"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alex-a22103429/misracrules1.0.git"
-  },
-  "bugs": {
-    "url": "https://github.com/alex-a22103429/misracrules1.0/issues"
-  },
-  "homepage": "https://github.com/alex-a22103429/misracrules1.0",
-  "typeRoots": [
-    "./typings",
-    "./node_modules/@types"
-  ],
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "axios": "^1.6.7"
-  }
+  "main": "./out/extension.js",
+"engines": {
+  "vscode": "^1.60.0"
+}
+
+  
 }
