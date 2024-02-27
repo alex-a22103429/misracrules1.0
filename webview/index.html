@@ -1,24 +1,19 @@
-const vscode = acquireVsCodeApi();
+const misraRulesPanel = vscode.window.createWebviewPanel(
+    'misraRules',
+    'MISRA-C Rules',
+    vscode.ViewColumn.One,
+    {
+        enableScripts: true,
+        localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'src', 'misraRules'))]
+    }
+);
 
-const startButton = document.getElementById('start-button');
-const progressBar = document.getElementById('progress-bar');
-const progressText = document.getElementById('progress-text');
-
-startButton.addEventListener('click', () => {
-    // Simulate a processing task
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += 10;
-        progressBar.value = progress;
-
-        if (progress >= 100) {
-            clearInterval(interval);
-            progressText.textContent = 'Processing complete!';
-        } else {
-            progressText.textContent = `Processing... ${progress}%`;
-        }
-    }, 500);
-});
-
-// Use the vscode API to send messages to the extension
-vscode.postMessage({ command: 'ready' });
+const setApiKeyPanel = vscode.window.createWebviewPanel(
+    'setApiKey',
+    'Set API Key',
+    vscode.ViewColumn.One,
+    {
+        enableScripts: true,
+        localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'src', 'SetApiKey'))]
+    }
+);
