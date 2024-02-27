@@ -1,25 +1,24 @@
-<!-- webview/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Progress</title>
-</head>
-<body>
-    <div id="api-key-container">
-        <label for="api-key">Enter your OpenAI API Key:</label>
-        <input type="text" id="api-key" placeholder="API Key">
-        <button id="set-api-key">Set API Key</button>
-    </div>
+const vscode = acquireVsCodeApi();
 
-    <div id="progress-bar-container">
-        <progress id="progress-bar" max="100" value="0"></progress>
-        <p id="progress-text">Processing...</p>
-    </div>
-    <button id="start-button">Start Processing</button>
+const startButton = document.getElementById('start-button');
+const progressBar = document.getElementById('progress-bar');
+const progressText = document.getElementById('progress-text');
 
-    <script src="./index.js"></script>
-</body>
-</html>
+startButton.addEventListener('click', () => {
+    // Simulate a processing task
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 10;
+        progressBar.value = progress;
+
+        if (progress >= 100) {
+            clearInterval(interval);
+            progressText.textContent = 'Processing complete!';
+        } else {
+            progressText.textContent = `Processing... ${progress}%`;
+        }
+    }, 500);
+});
+
+// Use the vscode API to send messages to the extension
+vscode.postMessage({ command: 'ready' });

@@ -22,87 +22,57 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deactivate = exports.activate = void 0;
+exports.activate = void 0;
+// extension.ts
 const vscode = __importStar(require("vscode"));
-const openai_1 = require("./openai");
+const path = __importStar(require("path"));
 function activate(context) {
-    let disposable = vscode.commands.registerCommand('extension.misracrules', () => __awaiter(this, void 0, void 0, function* () {
-        const editor = vscode.window.activeTextEditor;
-        if (editor) {
-            const selection = editor.selection;
-            const selectedText = editor.document.getText(selection);
-            if (selectedText) {
-                try {
-                    // Display WebView with progress bar
-                    const panel = vscode.window.createWebviewPanel('misracrulesProgress', 'MISRA-C RULES Progress', vscode.ViewColumn.Two, {
-                        enableScripts: true,
-                    });
-                    panel.webview.html = getWebViewContent();
-                    // Simulate processing task
-                    yield simulateProcessing(panel);
-                    // Close the WebView when processing is complete
-                    panel.dispose();
-                }
-                catch (error) {
-                    vscode.window.showErrorMessage(`Error communicating with MISRA-C RULES: ${error.message}`);
-                }
-            }
-            else {
-                vscode.window.showWarningMessage('No code snippet selected. Please select a code snippet before using MISRA-C RULES.');
-            }
-        }
-    }));
-    context.subscriptions.push(disposable);
-    // Add a command for setting the API key
-    context.subscriptions.push(vscode.commands.registerCommand('extension.setApiKey', setApiKey));
+    // Register command to open MISRA-C Rules view
+    const misraRulesDisposable = vscode.commands.registerCommand('extension.misracrules', () => {
+        const panel = vscode.window.createWebviewPanel('misraRules', // Identifies the type of the webview. Used internally
+        'MISRA-C Rules', // Title of the panel displayed to the user
+        vscode.ViewColumn.One, // Editor column to show the new webview panel in
+        {
+            enableScripts: true, // Enable scripts in the webview
+        });
+        // Get the path to the webview's HTML file on disk
+        const onDiskPath = vscode.Uri.file(path.join(context.extensionPath, 'webview/misracRules/index.html'));
+        const htmlPath = panel.webview.asWebviewUri(onDiskPath);
+        // Set the HTML content in the webview
+        panel.webview.html = getWebviewContent(htmlPath);
+    });
+    context.subscriptions.push(misraRulesDisposable);
+    // Register command to open Set API Key view
+    const setApiKeyDisposable = vscode.commands.registerCommand('extension.setApiKey', () => {
+        const panel = vscode.window.createWebviewPanel('setApiKey', // Identifies the type of the webview. Used internally
+        'Set API Key', // Title of the panel displayed to the user
+        vscode.ViewColumn.One, // Editor column to show the new webview panel in
+        {
+            enableScripts: true, // Enable scripts in the webview
+        });
+        // Get the path to the webview's HTML file on disk
+        const onDiskPath = vscode.Uri.file(path.join(context.extensionPath, 'webview/setApiKey/index.html'));
+        const htmlPath = panel.webview.asWebviewUri(onDiskPath);
+        // Set the HTML content in the webview
+        panel.webview.html = getWebviewContent(htmlPath);
+    });
+    context.subscriptions.push(setApiKeyDisposable);
 }
 exports.activate = activate;
-function getWebViewContent() {
-    var _a;
-    const extensionPath = ((_a = vscode.extensions.getExtension('alex-a22103429.misracrules')) === null || _a === void 0 ? void 0 : _a.extensionPath) || '';
-    const webViewPath = vscode.Uri.file(extensionPath + '/webview/index.html');
-    return webViewPath.fsPath;
+// Function to get the HTML content of the webview
+function getWebviewContent(htmlPath) {
+    return `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Webview</title>
+    </head>
+    <body>
+        <iframe src="${htmlPath}" width="100%" height="100%"></iframe>
+    </body>
+    </html>`;
 }
-function simulateProcessing(panel) {
-    return __awaiter(this, void 0, void 0, function* () {
-        // Simulate a processing task
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += 10;
-            panel.webview.postMessage({ command: 'updateProgress', progress });
-            if (progress >= 100) {
-                clearInterval(interval);
-                panel.webview.postMessage({ command: 'completeProcessing' });
-            }
-        }, 500);
-    });
-}
-function setApiKey() {
-    vscode.window.showInputBox({
-        prompt: 'Enter your new OpenAI API key',
-        placeHolder: 'API Key',
-        password: true,
-    }).then((apiKey) => {
-        if (apiKey) {
-            // Use the apiKey as needed with OpenAIAPI
-            openai_1.OpenAIAPI.setApiKey(apiKey);
-            vscode.window.showInformationMessage('API key updated successfully.');
-        }
-        else {
-            vscode.window.showErrorMessage('No API key entered. Please provide a valid API key.');
-        }
-    });
-}
-function deactivate() { }
-exports.deactivate = deactivate;
 //# sourceMappingURL=extension.js.map

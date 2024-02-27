@@ -12,12 +12,12 @@
         "resolveJsonModule": true,
         "declaration": true,
         "sourceMap": true,
-        "baseUrl": "./",  // Adjusted the baseUrl for consistency
+        "baseUrl": "./",
         "paths": {
             "*": ["node_modules/*"],
             "vscode": ["node_modules/vscode"]
         },
-        "typeRoots": ["./typings", "./node_modules/@types"]  // Added typeRoots for custom type definitions
+        "typeRoots": ["./typings", "./node_modules/@types"]
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "out"]
